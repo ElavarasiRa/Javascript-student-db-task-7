@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Database</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="reset.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+	<style>
+		h1{
+			color: white;
+			text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+		}
+		#img{
+			width:100px;
+			height:100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid bg-light">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 text-center mt-4">
+				<h1><i>Students Database</i></h1><br>
+				<button class="btn btn-primary" onclick="addDetail()">Add Details</button>
+			</div>
+			<div class="container table-responsive"><br>
+				<table style="width: 100%;" class="table table-striped">
+					<thead>
+						<th>Name</th>
+						<th>E-Mail</th>
+						<th>Gender</th>
+						<th>Age</th>
+						<th>Aadhaar No</th>
+						<th>Profile</th>
+					</thead>
+					<tbody id="tableBody">
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	var data = JSON.parse(localStorage.getItem('user1'));
+	console.log(data)
+	for(let i=0;i<data.length;i++){
+		document.getElementById('tableBody').innerHTML +='<td>'+data[i].name+'</td>'+'<td>'+data[i].email+'</td>'+'<td>'+data[i].gender+'</td>'+'<td>'+data[i].age+'</td>'+'<td>'+data[i].aadhaar+'</td>'+'<td><img id="img" src='+data[i].image+'></td>'
+	}
+	function addDetail(){
+		location.replace("details.html")
+	}
+</script>
+</html>
